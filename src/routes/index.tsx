@@ -1,6 +1,8 @@
 import { Main } from '../pages';
+import { Test } from '../pages/Test';
 import { Users } from '../pages/Users/users';
-import loginRoutes from './loginRoutes';
+import { ErrorBoundary } from './ErrorBoundary';
+//import loginRoutes from './loginRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 
 export const routesConfig = () => [
@@ -11,6 +13,7 @@ export const routesConfig = () => [
                 <Main />
             </ProtectedRoutes>
         ),
+        errorElement: <ErrorBoundary />,
         children: [
             {
                 path: 'users',
@@ -26,7 +29,11 @@ export const routesConfig = () => [
             }
         ]
     },
-    ...loginRoutes,
+    //...loginRoutes,
+    {
+        path: '/test',
+        element: <Test />
+    },
     {
         path: '/*',
         element: <>Page not found</>

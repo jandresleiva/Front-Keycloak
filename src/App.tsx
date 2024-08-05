@@ -3,20 +3,22 @@ import { darkTheme, lightTheme } from './themes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext/AuthProvider';
 import { routesConfig } from './routes';
+import { OidcProvider } from './OidcProvider';
 
 function App() {
     const getCurrentTheme = () =>
         window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     return (
         <>
-            <AuthProvider>
-                <ThemeProvider
-                    theme={getCurrentTheme() ? darkTheme : lightTheme}
-                >
-                    <AuthBasedRouter />
-                </ThemeProvider>
-            </AuthProvider>
+            <OidcProvider>
+                <AuthProvider>
+                    <ThemeProvider
+                        theme={getCurrentTheme() ? darkTheme : lightTheme}
+                    >
+                        <AuthBasedRouter />
+                    </ThemeProvider>
+                </AuthProvider>
+            </OidcProvider>
         </>
     );
 }

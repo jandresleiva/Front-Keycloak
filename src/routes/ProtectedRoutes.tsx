@@ -1,7 +1,5 @@
-import { Navigate } from 'react-router-dom';
-import useAuth from '../contexts/AuthContext/useAuth';
-
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import useOidc from '../useOidc';
 
 /***
  * ProtectedRoutes component
@@ -11,9 +9,30 @@ import { ReactNode } from 'react';
  * @param children
  */
 const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
-    const { authState } = useAuth();
+    const { client: oidcClient, isLoading } = useOidc();
 
-    return authState.isAuthenticated ? children : <Navigate to="/login" />;
+    useEffect(() => {
+        console.count('ProtectedRoutes rendered');
+        if (!oidcClient) {
+            console.error('Keycloak adapter is not initialized');
+            throw new Error('Keycloak adapter is not initialized');
+        }
+
+        if (!oidcClient.authenticated) {
+            console.log('Oidc', oidcClient);
+            if (!oidcClient) {
+                console.error('Keycloak adapter is not initialized');
+            } else {
+                oidcClient.login({
+                    redirectUri: 'http://localhost:5173/test'
+                });
+            }
+        } else {
+            console.log('User is authenticated');
+        }
+    }, [oidcClient, oidcClient.authenticated, isLoading]);
+
+    return oidcClient.authenticated ? children : <h1>Not authenticated</h1>;
 };
 
 export default ProtectedRoutes;
