@@ -20,6 +20,7 @@ export const OidcProvider: React.FC<OidcProviderProps> = ({ children }) => {
     if (!isInitialized) {
         console.count('Initializing keycloak client on provider');
         void client.init({}).then(() => {
+            console.log('Keycloak client initialized');
             setIsLoading(false);
             setIsInitialized(true);
         });

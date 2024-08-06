@@ -28,6 +28,13 @@ export const Main = () => {
             >
                 Clients
             </Button>
+            <Button
+                sx={{ mt: 3, mb: 2, ml: 2 }}
+                onClick={() => navigate('test')}
+                variant="contained"
+            >
+                Test
+            </Button>
             <Outlet />
         </Paper>
     );

@@ -48,6 +48,7 @@ export const Test = () => {
                     <p>first name: {profile?.firstName}</p>
                     <p>last name: {profile?.lastName}</p>
                     <p>username: {profile?.username}</p>
+                    <p>token: {client?.token}</p>
                     <p>
                         role:{' '}
                         {client?.hasRealmRole('administrator')
