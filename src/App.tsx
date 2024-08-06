@@ -3,7 +3,7 @@ import { darkTheme, lightTheme } from './themes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext/AuthProvider';
 import { routesConfig } from './routes';
-import { OidcProvider } from './OidcProvider';
+import { OidcProvider } from './contexts/OidcContext/OidcProvider';
 
 function App() {
     const getCurrentTheme = () =>

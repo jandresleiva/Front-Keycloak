@@ -2,8 +2,12 @@ import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { KeycloakProfile } from 'keycloak-js';
 import { useNavigate } from 'react-router-dom';
-import useOidc from '../../useOidc';
+import useOidc from '../../contexts/OidcContext/useOidc';
 
+/***
+ * This page will show the status of the user authentication.
+ * It should not be used in production, it is only for testing purposes.
+ */
 export const Test = () => {
     const { client, isLoading } = useOidc();
     const [profile, setProfile] = useState<KeycloakProfile | undefined>(

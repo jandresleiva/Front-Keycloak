@@ -5,7 +5,7 @@ import { OidcContextProvider } from './OidcContextProvider.types';
 const useOidc = (): OidcContextProvider => {
     const context = useContext(OidcContext);
     if (!context) {
-        throw new Error('useAuth must be used within an AuthProvider');
+        throw new Error('useOidc must be used within an OidcProvider');
     }
     return context;
 };

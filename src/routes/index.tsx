@@ -2,7 +2,6 @@ import { Main } from '../pages';
 import { Test } from '../pages/Test';
 import { Users } from '../pages/Users/users';
 import { ErrorBoundary } from './ErrorBoundary';
-//import loginRoutes from './loginRoutes';
 import ProtectedRoutes from './ProtectedRoutes';
 
 export const routesConfig = () => [
@@ -29,7 +28,6 @@ export const routesConfig = () => [
             }
         ]
     },
-    //...loginRoutes,
     {
         path: '/test',
         element: <Test />

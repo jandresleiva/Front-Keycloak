@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import useOidc from '../useOidc';
+import useOidc from '../contexts/OidcContext/useOidc';
 
 /***
  * ProtectedRoutes component
