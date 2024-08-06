@@ -17,6 +17,7 @@ const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
             throw new Error('Keycloak adapter is not initialized');
         }
 
+        // If the user is not authenticated, redirect to login page
         if (!isLoading && !oidcClient.authenticated) {
             oidcClient.login({
                 redirectUri: 'http://localhost:5173/'

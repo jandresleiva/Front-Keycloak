@@ -6,7 +6,7 @@ export interface AuthContextState {
 export interface AuthContextProvider {
     children?: React.ReactNode;
     authState: AuthContextState;
-    login: (username: string, password: string) => Promise<boolean>;
+    login: (user: string) => Promise<boolean>;
     logout: () => void;
     //setAuthState: React.Dispatch<React.SetStateAction<AuthContextState>>;
 }
