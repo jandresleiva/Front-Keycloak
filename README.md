@@ -48,6 +48,14 @@ pnpm run dev
 This will start the application and open it in your default web browser. The
 application will automatically reload if you change any of the source files.
 
+## Keycloak
+
+To run an instance of keycloak in your own docker run the following command
+
+```bash
+docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin --name keycloak quay.io/keycloak/keycloak:25.0.2 start-dev
+```
+
 ## Contributing
 
 Contributions are welcome! Please follow the standard
